@@ -481,7 +481,7 @@ const AgentSessionInputbarInner: FC<InnerProps> = ({ assistant, agentId, session
     () => (
       <ToolbarGroup>
         {config.showTools && (
-          <InputbarTools scope={scope} assistant={assistant} model={assistant.model!} session={toolsSession} />
+          <InputbarTools scope={scope} assistant={assistant} model={assistant.model} session={toolsSession} />
         )}
       </ToolbarGroup>
     ),

@@ -35,7 +35,7 @@ import styled from 'styled-components'
 export interface InputbarToolsNewProps {
   scope: InputbarScope
   assistant: Assistant
-  model: Model
+  model?: Model
   session?: ToolContext['session']
 }
 
@@ -50,9 +50,10 @@ const DraggablePortal = ({ children, isDragging }: { children: React.ReactNode; 
   return isDragging ? createPortal(children, document.body) : children
 }
 
-const InputbarTools = ({ scope, assistant, model, session }: InputbarToolsNewProps) => {
+const InputbarTools = ({ scope, assistant, model: modelOverride, session }: InputbarToolsNewProps) => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
+  const model = modelOverride ?? assistant.model
   const toolsContext = useInputbarTools()
   const quickPanelContext = useQuickPanel()
   const quickPanelApiCacheRef = useRef(new Map<string, ToolQuickPanelApi>())
